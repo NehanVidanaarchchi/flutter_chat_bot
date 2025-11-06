@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import '../models/chat_message.dart';
-import '../services/bot_service.dart'; // <-- must export HeartBotService with reportForRisk(...) and reportForPercent(...)
+import '../services/bot_service.dart'; 
 import 'dart:math';
 
-/// ------------------------------------------------------------
-/// 1) Floating launcher button you can place on any screen.
-///    Example usage: put ChatbotLauncherButton() inside a Stack
-///    on your Home page, or directly in the Scaffold's body.
-/// ------------------------------------------------------------
+
 class ChatbotLauncherButton extends StatelessWidget {
   const ChatbotLauncherButton({super.key});
 
@@ -70,10 +66,7 @@ class ChatbotLauncherButton extends StatelessWidget {
   }
 }
 
-/// ------------------------------------------------------------
-/// 2) Your original ChatScreen, unchanged in behavior.
-///    It can run full-screen OR inside the popup above.
-/// ------------------------------------------------------------
+
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key});
   @override
@@ -203,10 +196,6 @@ class _ChatScreenState extends State<ChatScreen> {
     }
   }
 
-  /// Parse a risk *percentage* from free text.
-  /// Supports: `risk=18%`, `risk=18.5`, `risk 7 %`, or a standalone `22%`
-  /// (but only when the word 'risk' appears in the message to avoid collisions
-  /// with other numeric fields).
   double? _parseRiskPercentFromText(String input) {
     final lower = input.toLowerCase();
 
@@ -240,8 +229,6 @@ class _ChatScreenState extends State<ChatScreen> {
     return null;
   }
 
-  /// Parse a risk *tier* from free text.
-  /// Accepts `risk=high|moderate|medium|low`, or phrases like "high risk", "risk high".
   String? _parseRiskFromText(String input) {
     final lower = input.toLowerCase();
 
@@ -271,8 +258,6 @@ class _ChatScreenState extends State<ChatScreen> {
     return null;
   }
 
-  /// Parse optional inputs from "key=value" pairs.
-  /// Supports aliases and unit-stripping (e.g., 140mmHg, 220 mg/dL).
   Map<String, dynamic> _parseInputs(String input) {
     final lower = input.toLowerCase();
 
